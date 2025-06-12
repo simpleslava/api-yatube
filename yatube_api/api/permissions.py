@@ -3,7 +3,7 @@
 from rest_framework import permissions
 
 
-class IsOwnerOrReadOnly(permissions.BasePermission):
+class IsOwnerOrReadOnlyPermission(permissions.BasePermission):
     """
     Разрешает доступ только владельцам объекта для небезопасных методов.
 
@@ -11,6 +11,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     """
 
     def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return request.user.is_authenticated
-        return obj.author == request.user
+        return (
+            request.method in permissions.SAFE_METHODS
+            or obj.author == request.user
+        )
