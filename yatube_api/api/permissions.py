@@ -7,7 +7,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     """
     Разрешает доступ только владельцам объекта для небезопасных методов.
 
-    Для безопасных методов (GET, HEAD, OPTIONS) требуется только аутентификация.
+    Для безопасных методов (GET, HEAD, OPTIONS) нужна только аутентификация.
     """
 
     def has_object_permission(self, request, view, obj):

@@ -50,8 +50,8 @@ class CommentViewSet(viewsets.ModelViewSet):
         """Обновление комментария."""
         instance = self.get_object()
         serializer = self.get_serializer(
-            instance, 
-            data=request.data, 
+            instance,
+            data=request.data,
             partial=False
         )
         serializer.is_valid(raise_exception=True)
